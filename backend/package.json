@@ -4,8 +4,8 @@
   "description": "SmartStock REST API Service built with Node.js, Express, TypeScript, Prisma, and Zod",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "dev:backend": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "node ./node_modules/ts-node-dev/lib/bin.js --respawn --transpile-only src/server.ts",
+    "dev:backend": "node ./node_modules/ts-node-dev/lib/bin.js --respawn --transpile-only src/server.ts",
     "build": "node ../node_modules/typescript/lib/tsc.js",
     "start": "node dist/server.js",
     "prisma:generate": "node ./node_modules/prisma/build/index.js generate",
