@@ -12,7 +12,7 @@ This document outlines the 27-phase master roadmap for building **SmartStock –
 - [x] **Phase 4: Authentication** - JWT auth, password hashing (bcrypt), RBAC (Admin, Manager, Cashier), Auth middleware.
 - [x] **Phase 5: Frontend Foundation** - Next.js layout system, theme provider, Axios API client, authentication context, reusable UI components.
 - [x] **Phase 6: Categories** - Backend CRUD API, validation, service layer, frontend category management UI.
-- [ ] **Phase 7: Products** - Product catalog, SKU tracking, reorder alert levels, unit of measure, pricing structures.
+- [x] **Phase 7: Products** - Product catalog, SKU tracking, reorder alert levels, unit of measure, pricing structures.
 - [ ] **Phase 8: Suppliers** - Supplier directory, contact info, lead times, purchase history linking.
 - [ ] **Phase 9: Customers** - Customer profiles, credit limit tracking, contact details, purchase analytics.
 - [ ] **Phase 10: Purchases** - Stock replenishment orders, purchase order lifecycle, inventory transaction triggers.

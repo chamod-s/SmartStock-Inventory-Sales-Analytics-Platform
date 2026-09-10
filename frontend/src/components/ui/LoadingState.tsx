@@ -8,14 +8,15 @@ export function Skeleton({ className = '' }: { className?: string }) {
 interface LoadingStateProps {
   type?: 'card' | 'table' | 'full';
   rows?: number;
+  message?: string;
 }
 
-export function LoadingState({ type = 'card', rows = 5 }: LoadingStateProps) {
+export function LoadingState({ type = 'card', rows = 5, message }: LoadingStateProps) {
   if (type === 'full') {
     return (
       <div className="flex flex-col items-center justify-center min-h-[400px]">
         <Loader2 className="w-8 h-8 text-brand-500 animate-spin mb-3" />
-        <p className="text-sm text-slate-400 font-medium">Loading SmartStock data...</p>
+        <p className="text-sm text-slate-400 font-medium">{message || 'Loading SmartStock data...'}</p>
       </div>
     );
   }

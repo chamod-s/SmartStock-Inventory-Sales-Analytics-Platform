@@ -579,8 +579,8 @@ export default function ProductsPage() {
       {/* Main Table Container */}
       <div className="bg-slate-900/70 backdrop-blur-md rounded-2xl border border-slate-800 shadow-xl overflow-hidden">
         {isLoading ? (
-          <div className="p-16 flex items-center justify-center">
-            <LoadingState message="Loading products catalog..." />
+          <div className="p-6">
+            <LoadingState type="table" rows={6} />
           </div>
         ) : products.length === 0 ? (
           <div className="p-12">
