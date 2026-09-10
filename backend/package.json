@@ -13,7 +13,8 @@
     "prisma:seed": "node ./node_modules/ts-node/dist/bin.js prisma/seed.ts",
     "prisma:studio": "node ./node_modules/prisma/build/index.js studio",
     "test:auth": "node dist/tests/auth.test.js",
-    "test:category": "node ./node_modules/ts-node/dist/bin.js src/tests/category.test.ts"
+    "test:category": "node ./node_modules/ts-node/dist/bin.js src/tests/category.test.ts",
+    "test:product": "node ./node_modules/ts-node/dist/bin.js src/tests/product.test.ts"
   },
   "prisma": {
     "seed": "node ./node_modules/ts-node/dist/bin.js prisma/seed.ts"

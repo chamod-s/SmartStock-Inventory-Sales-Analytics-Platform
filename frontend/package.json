@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "node ../node_modules/next/dist/bin/next dev",
     "dev:frontend": "node ../node_modules/next/dist/bin/next dev",
-    "build": "next build",
+    "build": "node ../node_modules/next/dist/bin/next build",
     "start": "node ../node_modules/next/dist/bin/next start",
-    "lint": "next lint"
+    "lint": "node ../node_modules/next/dist/bin/next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

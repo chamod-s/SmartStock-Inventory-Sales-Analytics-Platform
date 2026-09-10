@@ -31,6 +31,14 @@ export function StatusBadge({ status, type = 'status', size = 'md' }: StatusBadg
     BANK_TRANSFER: 'bg-teal-500/10 text-teal-400 border-teal-500/30',
     ONLINE: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
 
+    // Stock Statuses
+    IN_STOCK: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+    'IN STOCK': 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+    LOW_STOCK: 'bg-amber-500/15 text-amber-400 border-amber-500/30',
+    'LOW STOCK': 'bg-amber-500/15 text-amber-400 border-amber-500/30',
+    OUT_OF_STOCK: 'bg-red-500/15 text-red-400 border-red-500/30',
+    'OUT OF STOCK': 'bg-red-500/15 text-red-400 border-red-500/30',
+
     // Transactions
     PURCHASE: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30',
     SALE: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
