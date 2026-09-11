@@ -15,7 +15,7 @@ This document outlines the 27-phase master roadmap for building **SmartStock –
 - [x] **Phase 7: Products** - Product catalog, SKU tracking, reorder alert levels, unit of measure, pricing structures. //Completed
 - [x] **Phase 8: Suppliers** - Supplier directory, contact info, lead times, purchase history linking. //Completed
 - [x] **Phase 9: Customers** - Customer profiles, credit limit tracking, contact details, purchase analytics. //Completed
-- [ ] **Phase 10: Purchases** - Stock replenishment orders, purchase order lifecycle, inventory transaction triggers.
+- [x] **Phase 10: Purchases** - Stock replenishment orders, purchase order lifecycle, inventory transaction triggers. //Completed
 - [ ] **Phase 11: Inventory** - Stock tracking, inventory audit log, stock adjustments, low-stock notifications (no negative inventory constraint).
 - [ ] **Phase 12: Sales/POS** - Fast Point of Sale interface, atomic cart checkout, stock deduction with Prisma database transactions.
 - [ ] **Phase 13: Payments** - Payment method recording (Cash, Card, Transfer, Credit), split payments, payment status tracking.
