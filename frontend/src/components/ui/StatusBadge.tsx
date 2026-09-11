@@ -45,6 +45,17 @@ export function StatusBadge({ status, type = 'status', size = 'md' }: StatusBadg
     RETURN: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
     DAMAGE: 'bg-red-500/10 text-red-400 border-red-500/30',
     ADJUSTMENT: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
+
+    // Customer Segments
+    VIP: 'bg-purple-500/15 text-purple-300 border-purple-500/30',
+    LOYAL: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30',
+    NEW: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+    AT_RISK: 'bg-rose-500/15 text-rose-300 border-rose-500/30',
+    'AT RISK': 'bg-rose-500/15 text-rose-300 border-rose-500/30',
+    OCCASIONAL: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
+    PROSPECT: 'bg-slate-700/50 text-slate-400 border-slate-600',
+    WALK_IN: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+    'WALK IN': 'bg-amber-500/15 text-amber-300 border-amber-500/30',
   };
 
   const currentStyle = styles[normalized] || 'bg-slate-800 text-slate-300 border-slate-700';

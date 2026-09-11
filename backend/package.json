@@ -14,7 +14,9 @@
     "prisma:studio": "node ./node_modules/prisma/build/index.js studio",
     "test:auth": "node dist/tests/auth.test.js",
     "test:category": "node ./node_modules/ts-node/dist/bin.js src/tests/category.test.ts",
-    "test:product": "node ./node_modules/ts-node/dist/bin.js src/tests/product.test.ts"
+    "test:product": "node ./node_modules/ts-node/dist/bin.js src/tests/product.test.ts",
+    "test:supplier": "node ./node_modules/ts-node/dist/bin.js src/tests/supplier.test.ts",
+    "test:customer": "node ./node_modules/ts-node/dist/bin.js src/tests/customer.test.ts"
   },
   "prisma": {
     "seed": "node ./node_modules/ts-node/dist/bin.js prisma/seed.ts"
