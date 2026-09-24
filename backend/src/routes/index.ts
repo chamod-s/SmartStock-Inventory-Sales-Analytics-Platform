@@ -12,6 +12,7 @@ import paymentRoutes from './payment.routes';
 import invoiceRoutes from './invoice.routes';
 import expenseRoutes from './expense.routes';
 import dashboardRoutes from './dashboard.routes';
+import analyticsRoutes from './analytics.routes';
 
 const router = Router();
 
@@ -28,6 +29,7 @@ router.use('/payments', paymentRoutes);
 router.use('/invoices', invoiceRoutes);
 router.use('/expenses', expenseRoutes);
 router.use('/dashboard', dashboardRoutes);
+router.use('/analytics', analyticsRoutes);
 
 export default router;
 
