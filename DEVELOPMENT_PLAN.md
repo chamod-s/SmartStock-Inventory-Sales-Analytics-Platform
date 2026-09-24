@@ -18,8 +18,8 @@ This document outlines the 27-phase master roadmap for building **SmartStock –
 - [x] **Phase 10: Purchases** - Stock replenishment orders, purchase order lifecycle, inventory transaction triggers. //Completed
 - [x] **Phase 11: Inventory** - Stock tracking, inventory audit log, stock adjustments, low-stock notifications (no negative inventory constraint). //Completed
 - [x] **Phase 12: Sales/POS** - Fast Point of Sale interface, atomic cart checkout, stock deduction with Prisma database transactions. //Completed
-- [ ] **Phase 13: Payments** - Payment method recording (Cash, Card, Transfer, Credit), split payments, payment status tracking.
-- [ ] **Phase 14: Invoices** - Automated invoice PDF/printable generation, transaction breakdown, receipt styling.
+- [x] **Phase 13: Payments** - Payment method recording (CASH, CARD, BANK_TRANSFER, ONLINE), split payments, payment status tracking, validation & business rules, transactional POS checkout integration. //Completed
+- [x] **Phase 14: Invoices** - Sale-based invoice record architecture, unique sequence generator (INV-000001, INV-000002) with concurrency safety, view/print/download invoice engine, professional print-optimized layout. //Completed
 - [ ] **Phase 15: Expenses** - Operational expense tracking, category tagging, cash flow impact.
 - [ ] **Phase 16: Dashboard** - Real-time metrics overview, low-stock alerts widget, quick action shortcuts, key performance indicators.
 - [ ] **Phase 17: Analytics** - Sales trend charts, revenue vs profit calculations, top-selling products, category breakdown.

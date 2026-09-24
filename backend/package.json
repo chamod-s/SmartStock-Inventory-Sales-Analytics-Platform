@@ -19,7 +19,9 @@
     "test:customer": "node ./node_modules/ts-node/dist/bin.js src/tests/customer.test.ts",
     "test:purchase": "node ./node_modules/ts-node/dist/bin.js src/tests/purchase.test.ts",
     "test:inventory": "node ./node_modules/ts-node/dist/bin.js src/tests/inventory.test.ts",
-    "test:sale": "node ./node_modules/ts-node/dist/bin.js src/tests/sale.test.ts"
+    "test:sale": "node ./node_modules/ts-node/dist/bin.js src/tests/sale.test.ts",
+    "test:payment": "node ./node_modules/ts-node/dist/bin.js src/tests/payment.test.ts",
+    "test:invoice": "node ./node_modules/ts-node/dist/bin.js src/tests/invoice.test.ts"
   },
   "prisma": {
     "seed": "node ./node_modules/ts-node/dist/bin.js prisma/seed.ts"

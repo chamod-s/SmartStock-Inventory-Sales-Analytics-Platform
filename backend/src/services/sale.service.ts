@@ -12,6 +12,11 @@ import {
   inventoryService as defaultInventoryService,
 } from './inventory.service';
 import {
+  PaymentService,
+  paymentService as defaultPaymentService,
+  PaymentStatus,
+} from './payment.service';
+import {
   CreateSaleInput,
   SaleQueryInput,
   createSaleSchema,
@@ -20,7 +25,19 @@ import { WALK_IN_CUSTOMER_CODE } from '../repositories/customer.repository';
 import { ApiError } from '../utils/apiError';
 import { IPaginatedData } from '../types';
 
-export interface SaleListResult extends IPaginatedData<SaleWithRelations> {
+export type FormattedSaleWithRelations = SaleWithRelations & {
+  totalPaid: number;
+  balanceRemaining: number;
+  paymentStatus: PaymentStatus;
+};
+
+export type FormattedSaleWithDetails = SaleWithDetails & {
+  totalPaid: number;
+  balanceRemaining: number;
+  paymentStatus: PaymentStatus;
+};
+
+export interface SaleListResult extends IPaginatedData<FormattedSaleWithRelations> {
   summary: SaleSummary;
 }
 
@@ -28,8 +45,41 @@ export class SaleService {
   constructor(
     private prismaClient: PrismaClient = prisma,
     private saleRepo: SaleRepository = defaultSaleRepo,
-    private inventoryService: InventoryService = defaultInventoryService
+    private inventoryService: InventoryService = defaultInventoryService,
+    private paymentService: PaymentService = defaultPaymentService
   ) {}
+
+  public static formatSaleDetails(sale: SaleWithDetails): FormattedSaleWithDetails {
+    const saleTotal = Number(sale.totalAmount);
+    const totalPaid = Number(
+      (sale.payments || []).reduce((acc, p) => acc + Number(p.amount), 0).toFixed(2)
+    );
+    const balanceRemaining = Math.max(0, Number((saleTotal - totalPaid).toFixed(2)));
+    const paymentStatus = PaymentService.calculatePaymentStatus(saleTotal, totalPaid);
+
+    return {
+      ...sale,
+      totalPaid,
+      balanceRemaining,
+      paymentStatus,
+    };
+  }
+
+  public static formatSaleRelations(sale: SaleWithRelations): FormattedSaleWithRelations {
+    const saleTotal = Number(sale.totalAmount);
+    const totalPaid = Number(
+      (sale.payments || []).reduce((acc, p) => acc + Number(p.amount), 0).toFixed(2)
+    );
+    const balanceRemaining = Math.max(0, Number((saleTotal - totalPaid).toFixed(2)));
+    const paymentStatus = PaymentService.calculatePaymentStatus(saleTotal, totalPaid);
+
+    return {
+      ...sale,
+      totalPaid,
+      balanceRemaining,
+      paymentStatus,
+    };
+  }
 
   public async listSales(query: SaleQueryInput): Promise<SaleListResult> {
     const {
@@ -114,8 +164,10 @@ export class SaleService {
 
     const totalPages = Math.ceil(totalItems / limit) || 1;
 
+    const formattedItems = items.map((sale) => SaleService.formatSaleRelations(sale));
+
     return {
-      items,
+      items: formattedItems,
       pagination: {
         page,
         limit,
@@ -128,20 +180,20 @@ export class SaleService {
     };
   }
 
-  public async getSaleById(id: string): Promise<SaleWithDetails> {
+  public async getSaleById(id: string): Promise<FormattedSaleWithDetails> {
     const sale = await this.saleRepo.findById(id);
     if (!sale) {
       throw ApiError.notFound(`Sale transaction with ID '${id}' was not found`);
     }
-    return sale;
+    return SaleService.formatSaleDetails(sale);
   }
 
-  public async getSaleByInvoice(invoiceNumber: string): Promise<SaleWithDetails> {
+  public async getSaleByInvoice(invoiceNumber: string): Promise<FormattedSaleWithDetails> {
     const sale = await this.saleRepo.findByInvoiceNumber(invoiceNumber);
     if (!sale) {
       throw ApiError.notFound(`Sale invoice '${invoiceNumber}' was not found`);
     }
-    return sale;
+    return SaleService.formatSaleDetails(sale);
   }
 
   public async getSummary(): Promise<SaleSummary> {
@@ -162,7 +214,7 @@ export class SaleService {
    * 9. Create payment
    * 10. Generate invoice number
    */
-  public async createSale(rawInput: CreateSaleInput, userId: string): Promise<SaleWithDetails> {
+  public async createSale(rawInput: CreateSaleInput, userId: string): Promise<FormattedSaleWithDetails> {
     const input = createSaleSchema.parse(rawInput);
 
     if (!userId) {
@@ -302,37 +354,25 @@ export class SaleService {
           });
         }
 
-        // Step 9: Create Payment record
+        // Step 9: Record payment using centralized PaymentService in the same database transaction
         const paymentAmount =
           input.amountPaid !== undefined && input.amountPaid > 0
             ? Math.min(input.amountPaid, totalAmount)
             : totalAmount;
 
-        await tx.payment.create({
-          data: {
+        await this.paymentService.recordPayment(
+          {
             saleId: createdSale.id,
-            amount: new Prisma.Decimal(paymentAmount.toFixed(2)),
+            amount: paymentAmount,
             paymentMethod: input.paymentMethod,
             transactionRef: input.transactionRef?.trim() || null,
-            paidAt: new Date(),
           },
-        });
-
-        // Step 11: If customer linked, update customer totalSpent
-        if (resolvedCustomerId) {
-          await tx.customer.update({
-            where: { id: resolvedCustomerId },
-            data: {
-              totalSpent: {
-                increment: new Prisma.Decimal(totalAmount.toFixed(2)),
-              },
-            },
-          });
-        }
+          tx
+        );
 
         // Return detailed sale
         const fullSale = await this.saleRepo.findById(createdSale.id, tx);
-        return fullSale!;
+        return SaleService.formatSaleDetails(fullSale!);
       },
       {
         timeout: 10000,

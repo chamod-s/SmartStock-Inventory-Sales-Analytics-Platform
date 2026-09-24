@@ -258,26 +258,43 @@ export class SaleRepository {
   public async generateInvoiceNumber(
     tx: Prisma.TransactionClient | PrismaClient = this.client
   ): Promise<string> {
-    const year = new Date().getFullYear();
-    const prefix = `INV-${year}-`;
+    const prefix = 'INV-';
     const lastSale = await tx.sale.findFirst({
       where: {
         invoiceNumber: { startsWith: prefix },
       },
-      orderBy: { invoiceNumber: 'desc' },
+      orderBy: { createdAt: 'desc' },
       select: { invoiceNumber: true },
     });
 
     let sequence = 1;
     if (lastSale?.invoiceNumber) {
-      const parts = lastSale.invoiceNumber.split('-');
-      const lastSeq = parseInt(parts[parts.length - 1], 10);
-      if (!isNaN(lastSeq)) {
-        sequence = lastSeq + 1;
+      const match = lastSale.invoiceNumber.match(/(\d+)$/);
+      if (match) {
+        const lastSeq = parseInt(match[1], 10);
+        if (!isNaN(lastSeq)) {
+          sequence = lastSeq + 1;
+        }
       }
     }
 
-    return `${prefix}${sequence.toString().padStart(5, '0')}`;
+    // Ensure candidate is strictly unique under concurrent requests
+    let candidate = `${prefix}${sequence.toString().padStart(6, '0')}`;
+    let exists = await tx.sale.findUnique({
+      where: { invoiceNumber: candidate },
+      select: { id: true },
+    });
+
+    while (exists) {
+      sequence++;
+      candidate = `${prefix}${sequence.toString().padStart(6, '0')}`;
+      exists = await tx.sale.findUnique({
+        where: { invoiceNumber: candidate },
+        select: { id: true },
+      });
+    }
+
+    return candidate;
   }
 }
 

@@ -64,6 +64,9 @@ export interface SaleListItem {
   user: SaleUser;
   items: SaleItemDetail[];
   payments: SalePayment[];
+  totalPaid?: number;
+  balanceRemaining?: number;
+  paymentStatus?: 'PAID' | 'PARTIALLY_PAID' | 'UNPAID';
   _count?: {
     items: number;
   };

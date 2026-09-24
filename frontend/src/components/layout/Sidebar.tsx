@@ -20,6 +20,8 @@ import {
   UserCog,
   Settings,
   ShieldCheck,
+  CreditCard,
+  FileText,
   X,
 } from 'lucide-react';
 
@@ -41,6 +43,18 @@ const sidebarNavItems: SidebarItem[] = [
     label: 'Sales & POS',
     href: '/sales',
     icon: <Receipt className="w-5 h-5" />,
+    roles: ['ADMIN', 'MANAGER', 'CASHIER'],
+  },
+  {
+    label: 'Payments',
+    href: '/payments',
+    icon: <CreditCard className="w-5 h-5" />,
+    roles: ['ADMIN', 'MANAGER', 'CASHIER'],
+  },
+  {
+    label: 'Invoices',
+    href: '/invoices',
+    icon: <FileText className="w-5 h-5" />,
     roles: ['ADMIN', 'MANAGER', 'CASHIER'],
   },
   {

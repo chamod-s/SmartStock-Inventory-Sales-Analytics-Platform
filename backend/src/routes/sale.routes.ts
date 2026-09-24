@@ -2,6 +2,7 @@ import { Router } from 'express';
 import {
   getSales,
   getSaleById,
+  getSaleByInvoice,
   createSale,
   getSaleSummary,
 } from '../controllers/sale.controller';
@@ -13,6 +14,7 @@ const router = Router();
 // Read operations - All authenticated users (Admin, Manager, Cashier)
 router.get('/', authenticate, getSales);
 router.get('/summary', authenticate, getSaleSummary);
+router.get('/invoice/:invoiceNumber', authenticate, getSaleByInvoice);
 router.get('/:id', authenticate, getSaleById);
 
 // Create checkout sale - Admin, Manager, and Cashier

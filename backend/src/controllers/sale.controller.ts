@@ -27,3 +27,9 @@ export const getSaleSummary = asyncHandler(async (_req: Request, res: Response) 
   const summary = await saleService.getSummary();
   return ApiResponse.success(res, 'Sales summary retrieved successfully', summary);
 });
+
+export const getSaleByInvoice = asyncHandler(async (req: Request, res: Response) => {
+  const { invoiceNumber } = req.params;
+  const sale = await saleService.getSaleByInvoice(invoiceNumber);
+  return ApiResponse.success(res, 'Sale invoice retrieved successfully', sale);
+});
