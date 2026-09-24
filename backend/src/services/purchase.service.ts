@@ -8,6 +8,10 @@ import {
   PurchaseSummary,
 } from '../repositories/purchase.repository';
 import {
+  InventoryService,
+  inventoryService as defaultInventoryService,
+} from './inventory.service';
+import {
   CreatePurchaseInput,
   UpdatePurchaseInput,
   PurchaseQueryInput,
@@ -24,7 +28,8 @@ export interface PurchaseListResult extends IPaginatedData<PurchaseWithRelations
 export class PurchaseService {
   constructor(
     private prismaClient: PrismaClient = prisma,
-    private purchaseRepo: PurchaseRepository = defaultPurchaseRepo
+    private purchaseRepo: PurchaseRepository = defaultPurchaseRepo,
+    private inventoryService: InventoryService = defaultInventoryService
   ) {}
 
   public async listPurchases(query: PurchaseQueryInput): Promise<PurchaseListResult> {
@@ -237,34 +242,18 @@ export class PurchaseService {
           },
         });
 
-        // 6. If status is RECEIVED, update stock and create Inventory Transactions
+        // 6. If status is RECEIVED, update stock and create Inventory Transactions via centralized InventoryService
         if (targetStatus === PurchaseStatus.RECEIVED) {
           for (const item of input.items) {
             const product = productMap.get(item.productId)!;
-            const stockBefore = product.currentStock;
-            const stockAfter = stockBefore + item.quantity;
-
-            // Increase product currentStock and update purchasePrice
-            await tx.product.update({
-              where: { id: item.productId },
-              data: {
-                currentStock: stockAfter,
-                purchasePrice: new Prisma.Decimal(item.unitCost.toFixed(2)),
-              },
-            });
-
-            // Create InventoryTransaction audit record
-            await tx.inventoryTransaction.create({
-              data: {
-                productId: item.productId,
-                userId,
-                type: TransactionType.PURCHASE,
-                quantity: item.quantity,
-                stockBefore,
-                stockAfter,
-                referenceId: createdPurchase.id,
-                notes: `Purchase Order ${createdPurchase.purchaseOrderNumber} received (+${item.quantity} ${product.unit})`,
-              },
+            await this.inventoryService.recordStockMovement(tx, {
+              productId: item.productId,
+              userId,
+              type: TransactionType.PURCHASE,
+              quantityDelta: item.quantity,
+              referenceId: createdPurchase.id,
+              notes: `Purchase Order ${createdPurchase.purchaseOrderNumber} received (+${item.quantity} ${product.unit})`,
+              newPurchasePrice: item.unitCost,
             });
           }
         }
@@ -332,39 +321,14 @@ export class PurchaseService {
                 throw ApiError.badRequest(`Invalid quantity for product ${item.product.name}`);
               }
 
-              // Fetch fresh product data to avoid concurrency race conditions
-              const freshProduct = await tx.product.findUnique({
-                where: { id: item.productId },
-              });
-
-              if (!freshProduct) {
-                throw ApiError.notFound(`Product with ID '${item.productId}' not found`);
-              }
-
-              const stockBefore = freshProduct.currentStock;
-              const stockAfter = stockBefore + item.quantity;
-
-              // Increase product stock
-              await tx.product.update({
-                where: { id: item.productId },
-                data: {
-                  currentStock: stockAfter,
-                  purchasePrice: item.unitCost,
-                },
-              });
-
-              // Create inventory transaction
-              await tx.inventoryTransaction.create({
-                data: {
-                  productId: item.productId,
-                  userId,
-                  type: TransactionType.PURCHASE,
-                  quantity: item.quantity,
-                  stockBefore,
-                  stockAfter,
-                  referenceId: purchase.id,
-                  notes: `Purchase Order ${purchase.purchaseOrderNumber} received (+${item.quantity} ${freshProduct.unit})`,
-                },
+              await this.inventoryService.recordStockMovement(tx, {
+                productId: item.productId,
+                userId,
+                type: TransactionType.PURCHASE,
+                quantityDelta: item.quantity,
+                referenceId: purchase.id,
+                notes: `Purchase Order ${purchase.purchaseOrderNumber} received (+${item.quantity} ${item.product.unit})`,
+                newPurchasePrice: item.unitCost,
               });
             }
           }
