@@ -20,8 +20,8 @@ This document outlines the 27-phase master roadmap for building **SmartStock –
 - [x] **Phase 12: Sales/POS** - Fast Point of Sale interface, atomic cart checkout, stock deduction with Prisma database transactions. //Completed
 - [x] **Phase 13: Payments** - Payment method recording (CASH, CARD, BANK_TRANSFER, ONLINE), split payments, payment status tracking, validation & business rules, transactional POS checkout integration. //Completed
 - [x] **Phase 14: Invoices** - Sale-based invoice record architecture, unique sequence generator (INV-000001, INV-000002) with concurrency safety, view/print/download invoice engine, professional print-optimized layout. //Completed
-- [ ] **Phase 15: Expenses** - Operational expense tracking, category tagging, cash flow impact.
-- [ ] **Phase 16: Dashboard** - Real-time metrics overview, low-stock alerts widget, quick action shortcuts, key performance indicators.
+- [x] **Phase 15: Expenses** - Operational expense tracking, category taxonomy (Rent, Electricity, Salary, Transport, Marketing, Maintenance, Other), monetary validation, payment method recording, soft deactivation & deletion, RBAC (Admin & Manager only), automated backend & frontend test suites. //Completed
+- [x] **Phase 16: Dashboard** - Real-time metrics overview, 8 KPI cards (Revenue, Gross Profit, Net Profit, Orders, Customers, Products, Inventory Value, Expenses), 6 Recharts visual charts & operational feeds (Sales trend, Revenue vs Profit, Sales by category, Top selling products, Low-stock alerts, Recent sales), 6 date filter modes, RBAC permissions, automated backend & frontend test suites. //Completed
 - [ ] **Phase 17: Analytics** - Sales trend charts, revenue vs profit calculations, top-selling products, category breakdown.
 - [ ] **Phase 18: Reports** - Downloadable PDF/Excel business reports (Inventory valuation, Profit & Loss, Sales summaries).
 - [ ] **Phase 19: Python/Pandas Analytics** - Offline Python scripts for CSV sales data processing, moving averages, demand forecasting.

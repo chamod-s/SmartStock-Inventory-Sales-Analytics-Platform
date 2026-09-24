@@ -10,6 +10,8 @@ import inventoryRoutes from './inventory.routes';
 import saleRoutes from './sale.routes';
 import paymentRoutes from './payment.routes';
 import invoiceRoutes from './invoice.routes';
+import expenseRoutes from './expense.routes';
+import dashboardRoutes from './dashboard.routes';
 
 const router = Router();
 
@@ -24,6 +26,8 @@ router.use('/inventory', inventoryRoutes);
 router.use('/sales', saleRoutes);
 router.use('/payments', paymentRoutes);
 router.use('/invoices', invoiceRoutes);
+router.use('/expenses', expenseRoutes);
+router.use('/dashboard', dashboardRoutes);
 
 export default router;
 
