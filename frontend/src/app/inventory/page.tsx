@@ -290,7 +290,21 @@ export default function InventoryPage() {
     } else if (activeTab === 'alerts') {
       fetchLowStockAlerts();
     }
-  }, [activeTab, debouncedSearch, categoryFilter, stockStatusFilter, sortBy, sortOrder, debouncedHistorySearch, historyTypeFilter, historyStartDate, historyEndDate]);
+  }, [
+    activeTab,
+    debouncedSearch,
+    categoryFilter,
+    stockStatusFilter,
+    sortBy,
+    sortOrder,
+    debouncedHistorySearch,
+    historyTypeFilter,
+    historyStartDate,
+    historyEndDate,
+    fetchInventoryItems,
+    fetchHistoryItems,
+    fetchLowStockAlerts,
+  ]);
 
   // Selected Product for Adjustment
   const selectedProduct = useMemo(() => {

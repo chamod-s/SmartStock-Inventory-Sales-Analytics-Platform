@@ -42,7 +42,7 @@ export default function SaleInvoiceDetailPage() {
 
   const saleId = params.id as string;
 
-  const fetchSaleDetails = async () => {
+  const fetchSaleDetails = useCallback(async () => {
     try {
       const res = await api.get(`/sales/${saleId}`);
       if (res.data?.data) {
@@ -53,14 +53,14 @@ export default function SaleInvoiceDetailPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [saleId, showError]);
 
   useEffect(() => {
     if (saleId) {
       setIsLoading(true);
       fetchSaleDetails();
     }
-  }, [saleId]);
+  }, [saleId, fetchSaleDetails]);
 
   const handlePrint = () => {
     window.print();

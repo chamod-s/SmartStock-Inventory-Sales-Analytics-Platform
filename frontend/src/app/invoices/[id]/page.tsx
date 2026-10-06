@@ -49,7 +49,7 @@ export default function InvoiceDetailPage() {
 
   const invoiceId = params.id as string;
 
-  const fetchInvoice = async () => {
+  const fetchInvoice = useCallback(async () => {
     try {
       const res = await api.get(`/invoices/${invoiceId}`);
       if (res.data?.data) {
@@ -60,14 +60,14 @@ export default function InvoiceDetailPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [invoiceId, showError]);
 
   useEffect(() => {
     if (invoiceId) {
       setIsLoading(true);
       fetchInvoice();
     }
-  }, [invoiceId]);
+  }, [invoiceId, fetchInvoice]);
 
   const handlePrint = () => {
     window.print();

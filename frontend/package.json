@@ -11,7 +11,10 @@
     "test:expense": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/expense.frontend.test.ts",
     "test:dashboard": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/dashboard.frontend.test.ts",
     "test:analytics": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/analytics.frontend.test.ts",
-    "test:reports": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/reports.frontend.test.ts"
+    "test:reports": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/reports.frontend.test.ts",
+    "test:auth-nav": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/auth_navigation.frontend.test.ts",
+    "test:forms-pos": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/forms_pos.frontend.test.ts",
+    "test:all": "npm run test:auth-nav && npm run test:forms-pos && npm run test:dashboard && npm run test:expense && npm run test:analytics && npm run test:reports"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

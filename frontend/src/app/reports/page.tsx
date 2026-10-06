@@ -89,7 +89,7 @@ export default function ReportsPage() {
     `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
   // Helper to calculate date presets
-  const applyDatePreset = (preset: DatePreset) => {
+  const applyDatePreset = useCallback((preset: DatePreset) => {
     setDatePreset(preset);
     setPage(1);
     const now = new Date();
@@ -119,7 +119,7 @@ export default function ReportsPage() {
       setStartDate(formatDateYMD(start));
       setEndDate(formatDateYMD(end));
     }
-  };
+  }, []);
 
   // Switch tabs & reset default sorting/filtering
   const handleTabChange = (report: ReportType) => {
@@ -204,7 +204,7 @@ export default function ReportsPage() {
 
   useEffect(() => {
     applyDatePreset('30d');
-  }, []);
+  }, [applyDatePreset]);
 
   useEffect(() => {
     fetchReport();
