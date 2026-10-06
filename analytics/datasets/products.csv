@@ -1,0 +1,31 @@
+product_id,sku,name,category_name,purchase_price,selling_price,current_stock,reorder_level,unit,status,markup_percent,margin_percent,inventory_value,created_at
+prod-01,SKU-ELE-001,Wireless Bluetooth Headset Pro,Electronics & Gadgets,45.0,89.99,45,10,pcs,ACTIVE,99.98,49.99,2025.0,2026-04-01 08:00:00
+prod-02,SKU-ELE-002,Ergonomic Optical Wireless Mouse,Electronics & Gadgets,12.5,24.99,80,15,pcs,ACTIVE,99.92,49.98,1000.0,2026-04-01 08:00:00
+prod-03,SKU-ELE-003,Mechanical RGB Gaming Keyboard,Electronics & Gadgets,38.0,74.99,30,10,pcs,ACTIVE,97.34,49.33,1140.0,2026-04-01 08:00:00
+prod-04,SKU-ELE-004,4K Ultra-HD Monitor 27-inch,Electronics & Gadgets,180.0,299.99,12,5,pcs,ACTIVE,66.66,40.0,2160.0,2026-04-01 08:00:00
+prod-05,SKU-OFF-001,A4 Premium Copy Paper 500 Sheets,Office Supplies,3.2,6.99,250,50,ream,ACTIVE,118.44,54.22,800.0,2026-04-01 08:00:00
+prod-06,SKU-OFF-002,Gel Ink Rollerball Pens (Box of 12),Office Supplies,4.5,9.99,120,20,box,ACTIVE,122.0,54.95,540.0,2026-04-01 08:00:00
+prod-07,SKU-OFF-003,Heavy-Duty Desktop Stapler,Office Supplies,7.0,14.49,40,10,pcs,ACTIVE,107.0,51.69,280.0,2026-04-01 08:00:00
+prod-08,SKU-OFF-004,Adjustable Mesh Executive Chair,Office Supplies,95.0,189.99,8,3,pcs,ACTIVE,99.99,50.0,760.0,2026-04-01 08:00:00
+prod-09,SKU-BEV-001,Arabica Whole Bean Coffee 1kg,Beverages & Drinks,11.0,21.99,60,15,bag,ACTIVE,99.91,49.98,660.0,2026-04-01 08:00:00
+prod-10,SKU-BEV-002,Organic Green Tea (Box of 50 Bags),Beverages & Drinks,3.8,7.99,90,20,box,ACTIVE,110.26,52.44,342.0,2026-04-01 08:00:00
+prod-11,SKU-BEV-003,Sparkling Mineral Water 500ml (Pack 12),Beverages & Drinks,6.0,12.99,75,15,pack,ACTIVE,116.5,53.81,450.0,2026-04-01 08:00:00
+prod-12,SKU-BEV-004,Natural Cold Pressed Citrus Juice 1L,Beverages & Drinks,2.2,4.99,40,10,bottle,ACTIVE,126.82,55.91,88.0,2026-04-01 08:00:00
+prod-13,SKU-GRO-001,Organic Extra Virgin Olive Oil 750ml,Packaged Groceries,7.5,14.99,50,12,bottle,ACTIVE,99.87,49.97,375.0,2026-04-01 08:00:00
+prod-14,SKU-GRO-002,Wholegrain Oats 1kg,Packaged Groceries,2.1,4.49,110,25,pack,ACTIVE,113.81,53.23,231.0,2026-04-01 08:00:00
+prod-15,SKU-GRO-003,Raw Honey Jar 500g,Packaged Groceries,4.8,9.99,65,15,jar,ACTIVE,108.12,51.95,312.0,2026-04-01 08:00:00
+prod-16,SKU-GRO-004,Assorted Roasted Almonds 250g,Packaged Groceries,3.5,7.49,85,20,pack,ACTIVE,114.0,53.27,297.5,2026-04-01 08:00:00
+prod-17,SKU-APP-001,100% Cotton Polo Shirt (Medium),Apparel & Wearables,9.0,19.99,95,20,pcs,ACTIVE,122.11,54.98,855.0,2026-04-01 08:00:00
+prod-18,SKU-APP-002,High-Visibility Safety Vest,Apparel & Wearables,5.2,11.99,140,30,pcs,ACTIVE,130.58,56.63,728.0,2026-04-01 08:00:00
+prod-19,SKU-APP-003,Waterproof Work Gloves (Pair),Apparel & Wearables,2.8,6.49,180,40,pair,ACTIVE,131.79,56.86,504.0,2026-04-01 08:00:00
+prod-20,SKU-APP-004,Breathable Fleece Jacket (Large),Apparel & Wearables,22.0,44.99,35,10,pcs,ACTIVE,104.5,51.1,770.0,2026-04-01 08:00:00
+prod-21,SKU-HAR-001,20V Cordless Power Drill Set,Hardware & Tools,55.0,109.99,22,5,set,ACTIVE,99.98,50.0,1210.0,2026-04-01 08:00:00
+prod-22,SKU-HAR-002,Professional Precision Screwdriver Kit,Hardware & Tools,8.5,17.99,55,12,set,ACTIVE,111.65,52.75,467.5,2026-04-01 08:00:00
+prod-23,SKU-HAR-003,Digital Laser Distance Meter 50m,Hardware & Tools,18.0,36.99,28,8,pcs,ACTIVE,105.5,51.34,504.0,2026-04-01 08:00:00
+prod-24,SKU-HAR-004,Heavy-Duty Steel Measuring Tape 8m,Hardware & Tools,3.5,7.99,90,20,pcs,ACTIVE,128.29,56.2,315.0,2026-04-01 08:00:00
+prod-25,SKU-PER-001,Antibacterial Hand Sanitizer 500ml,Personal Care,1.8,3.99,300,50,bottle,ACTIVE,121.67,54.89,540.0,2026-04-01 08:00:00
+prod-26,SKU-PER-002,Gentle Moisturizing Hand Soap 1L,Personal Care,2.5,5.49,150,30,bottle,ACTIVE,119.6,54.46,375.0,2026-04-01 08:00:00
+prod-27,SKU-PER-003,Microfiber Facial Towels (Pack of 4),Personal Care,3.0,6.99,70,15,pack,ACTIVE,133.0,57.08,210.0,2026-04-01 08:00:00
+prod-28,SKU-HOM-001,Electric Stainless Steel Kettle 1.7L,Home Appliances,14.0,27.99,32,8,pcs,ACTIVE,99.93,49.98,448.0,2026-04-01 08:00:00
+prod-29,SKU-HOM-002,HEPA Air Purifier Desktop Size,Home Appliances,42.0,84.99,18,5,pcs,ACTIVE,102.36,50.58,756.0,2026-04-01 08:00:00
+prod-30,SKU-HOM-003,Compact Digital Microwave Oven 20L,Home Appliances,58.0,114.99,15,4,pcs,ACTIVE,98.26,49.56,870.0,2026-04-01 08:00:00

@@ -63,6 +63,7 @@ export interface ProductAnalytics {
     date: string;
     [productName: string]: string | number;
   }>;
+  topProductTrendNames?: string[];
 }
 
 export interface InventoryAnalytics {
@@ -81,6 +82,16 @@ export interface InventoryAnalytics {
     unitsOut: number;
     netMovement: number;
   };
+  lowStockItems?: Array<{
+    id: string;
+    name: string;
+    sku: string;
+    category: string;
+    currentStock: number;
+    reorderLevel: number;
+    deficit: number;
+    status: 'LOW_STOCK' | 'OUT_OF_STOCK';
+  }>;
   deadStockItems: Array<{
     id: string;
     name: string;
@@ -544,12 +555,21 @@ export class AnalyticsService {
       .slice(0, 10);
 
     // 5. Product Trends (Daily units sold for top 5 products)
-    const top5Ids = bestSellers.slice(0, 5).map((p) => p.id);
+    const top5BestSellers = bestSellers.slice(0, 5);
+    const top5Ids = top5BestSellers.map((p) => p.id);
+    const topProductTrendNames = top5BestSellers.map((p) => p.name);
     const trendDatesMap = new Map<string, Record<string, number>>();
 
     for (const sale of currentSales) {
       const dateKey = new Date(sale.createdAt).toISOString().split('T')[0];
-      const entry = trendDatesMap.get(dateKey) || {};
+      let entry = trendDatesMap.get(dateKey);
+      if (!entry) {
+        entry = {};
+        for (const name of topProductTrendNames) {
+          entry[name] = 0;
+        }
+        trendDatesMap.set(dateKey, entry);
+      }
 
       for (const item of sale.items) {
         if (top5Ids.includes(item.productId)) {
@@ -557,7 +577,6 @@ export class AnalyticsService {
           entry[prodName] = (entry[prodName] || 0) + item.quantity;
         }
       }
-      trendDatesMap.set(dateKey, entry);
     }
 
     const productTrends = Array.from(trendDatesMap.entries()).map(([date, counts]) => ({
@@ -571,6 +590,7 @@ export class AnalyticsService {
       mostProfitable,
       leastProfitable,
       productTrends,
+      topProductTrendNames,
     };
 
     // =========================================================
@@ -584,6 +604,7 @@ export class AnalyticsService {
     let overstockCount = 0;
     let deadStockCount = 0;
 
+    const lowStockItems: NonNullable<InventoryAnalytics['lowStockItems']> = [];
     const overstockItems: InventoryAnalytics['overstockItems'] = [];
     const deadStockItems: InventoryAnalytics['deadStockItems'] = [];
 
@@ -602,8 +623,28 @@ export class AnalyticsService {
 
       if (current <= 0) {
         outOfStockCount++;
+        lowStockItems.push({
+          id: p.id,
+          name: p.name,
+          sku: p.sku,
+          category: p.category?.name || 'General',
+          currentStock: current,
+          reorderLevel: reorder,
+          deficit: reorder - current,
+          status: 'OUT_OF_STOCK',
+        });
       } else if (current <= reorder) {
         lowStockCount++;
+        lowStockItems.push({
+          id: p.id,
+          name: p.name,
+          sku: p.sku,
+          category: p.category?.name || 'General',
+          currentStock: current,
+          reorderLevel: reorder,
+          deficit: reorder - current,
+          status: 'LOW_STOCK',
+        });
       }
 
       // Overstock: Stock > 3x Reorder level and at least 15 units
@@ -671,6 +712,7 @@ export class AnalyticsService {
         unitsOut,
         netMovement: unitsIn - unitsOut,
       },
+      lowStockItems: lowStockItems.sort((a, b) => b.deficit - a.deficit).slice(0, 10),
       deadStockItems: deadStockItems.sort((a, b) => b.costValue - a.costValue).slice(0, 10),
       overstockItems: overstockItems.sort((a, b) => b.costValue - a.costValue).slice(0, 10),
     };

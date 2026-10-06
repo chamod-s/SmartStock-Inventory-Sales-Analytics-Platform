@@ -24,7 +24,8 @@
     "test:invoice": "node ./node_modules/ts-node/dist/bin.js src/tests/invoice.test.ts",
     "test:expense": "node ./node_modules/ts-node/dist/bin.js src/tests/expense.test.ts",
     "test:dashboard": "node ./node_modules/ts-node/dist/bin.js src/tests/dashboard.test.ts",
-    "test:analytics": "node ./node_modules/ts-node/dist/bin.js src/tests/analytics.test.ts"
+    "test:analytics": "node ./node_modules/ts-node/dist/bin.js src/tests/analytics.test.ts",
+    "test:reports": "node ./node_modules/ts-node/dist/bin.js src/tests/reports.test.ts"
   },
   "prisma": {
     "seed": "node ./node_modules/ts-node/dist/bin.js prisma/seed.ts"

@@ -63,6 +63,7 @@ export interface ProductAnalytics {
     date: string;
     [productName: string]: string | number;
   }>;
+  topProductTrendNames?: string[];
 }
 
 export interface InventoryAnalytics {
@@ -81,6 +82,16 @@ export interface InventoryAnalytics {
     unitsOut: number;
     netMovement: number;
   };
+  lowStockItems?: Array<{
+    id: string;
+    name: string;
+    sku: string;
+    category: string;
+    currentStock: number;
+    reorderLevel: number;
+    deficit: number;
+    status: 'LOW_STOCK' | 'OUT_OF_STOCK';
+  }>;
   deadStockItems: Array<{
     id: string;
     name: string;

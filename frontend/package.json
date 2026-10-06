@@ -9,7 +9,9 @@
     "start": "node ../node_modules/next/dist/bin/next start",
     "lint": "node ../node_modules/next/dist/bin/next lint",
     "test:expense": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/expense.frontend.test.ts",
-    "test:dashboard": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/dashboard.frontend.test.ts"
+    "test:dashboard": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/dashboard.frontend.test.ts",
+    "test:analytics": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/analytics.frontend.test.ts",
+    "test:reports": "node ../backend/node_modules/ts-node/dist/bin.js -O \"{\\\"module\\\":\\\"CommonJS\\\"}\" src/tests/reports.frontend.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

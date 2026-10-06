@@ -1,0 +1,51 @@
+customer_id,code,name,email,phone,credit_limit,total_spent,order_count,avg_order_value,first_order_date,last_order_date,recency_days,customer_segment
+cust-001,CUST-001,James Brown,james.brown1@example.com,+1-555-2001,1000.0,7900.78,93,84.95,2026-04-12,2026-10-02,3,VIP Champion
+cust-002,CUST-002,Emma Miller,emma.miller2@example.com,+1-555-2002,1000.0,8809.8,95,92.73,2026-04-12,2026-10-02,3,VIP Champion
+cust-003,CUST-003,Liam Martinez,liam.martinez3@example.com,+1-555-2003,1000.0,8841.2,93,95.07,2026-04-10,2026-10-04,2,VIP Champion
+cust-004,CUST-004,Olivia Gonzalez,olivia.gonzalez4@example.com,+1-555-2004,1000.0,7534.52,85,88.64,2026-04-12,2026-10-06,-1,VIP Champion
+cust-005,CUST-005,Noah Thomas,noah.thomas5@example.com,+1-555-2005,5000.0,6743.19,87,77.51,2026-04-16,2026-10-06,-1,VIP Champion
+cust-006,CUST-006,Ava Jackson,ava.jackson6@example.com,+1-555-2006,1000.0,9313.81,93,100.15,2026-04-10,2026-10-06,-1,VIP Champion
+cust-007,CUST-007,Oliver Johnson,oliver.johnson7@example.com,+1-555-2007,1000.0,9173.16,94,97.59,2026-04-10,2026-10-04,2,VIP Champion
+cust-008,CUST-008,Sophia Jones,sophia.jones8@example.com,+1-555-2008,1000.0,9906.37,101,98.08,2026-04-10,2026-10-05,1,VIP Champion
+cust-009,CUST-009,Lucas Davis,lucas.davis9@example.com,+1-555-2009,1000.0,7887.47,71,111.09,2026-04-16,2026-10-03,2,VIP Champion
+cust-010,CUST-010,Isabella Hernandez,isabella.hernandez10@example.com,+1-555-2010,5000.0,8518.4,89,95.71,2026-04-10,2026-10-04,2,VIP Champion
+cust-011,CUST-011,Mason Wilson,mason.wilson11@example.com,+1-555-2011,1000.0,7849.63,92,85.32,2026-04-10,2026-10-06,0,VIP Champion
+cust-012,CUST-012,Mia Taylor,mia.taylor12@example.com,+1-555-2012,1000.0,8232.54,95,86.66,2026-04-11,2026-10-06,0,VIP Champion
+cust-013,CUST-013,Ethan Martin,ethan.martin13@example.com,+1-555-2013,1000.0,5866.18,86,68.21,2026-04-15,2026-10-05,1,VIP Champion
+cust-014,CUST-014,Charlotte Williams,charlotte.williams14@example.com,+1-555-2014,1000.0,8717.32,80,108.97,2026-04-12,2026-10-04,2,VIP Champion
+cust-015,CUST-015,Aiden Garcia,aiden.garcia15@example.com,+1-555-2015,5000.0,7193.83,77,93.43,2026-04-11,2026-10-05,1,VIP Champion
+cust-016,CUST-016,Amelia Rodriguez,amelia.rodriguez16@example.com,+1-555-2016,1000.0,1225.7,11,111.43,2026-04-10,2026-09-28,8,Active Regular
+cust-017,CUST-017,Jackson Lopez,jackson.lopez17@example.com,+1-555-2017,1000.0,888.98,8,111.12,2026-04-14,2026-10-02,4,Active Regular
+cust-018,CUST-018,Harper Anderson,harper.anderson18@example.com,+1-555-2018,1000.0,1258.15,12,104.85,2026-04-24,2026-09-07,29,Active Regular
+cust-019,CUST-019,Logan Moore,logan.moore19@example.com,+1-555-2019,1000.0,1098.81,7,156.97,2026-04-30,2026-10-02,4,Active Regular
+cust-020,CUST-020,Evelyn Smith,evelyn.smith20@example.com,+1-555-2020,5000.0,1170.51,10,117.05,2026-04-18,2026-09-26,10,Active Regular
+cust-021,CUST-021,Alexander Brown,alexander.brown21@example.com,+1-555-2021,1000.0,1482.58,12,123.55,2026-04-18,2026-09-11,25,Active Regular
+cust-022,CUST-022,Abigail Miller,abigail.miller22@example.com,+1-555-2022,1000.0,2173.82,10,217.38,2026-04-29,2026-09-28,7,Active Regular
+cust-023,CUST-023,Elijah Martinez,elijah.martinez23@example.com,+1-555-2023,1000.0,310.99,6,51.83,2026-05-08,2026-10-03,3,Active Regular
+cust-024,CUST-024,Emily Gonzalez,emily.gonzalez24@example.com,+1-555-2024,1000.0,836.04,13,64.31,2026-04-15,2026-09-29,7,Active Regular
+cust-025,CUST-025,Daniel Thomas,daniel.thomas25@example.com,+1-555-2025,5000.0,1832.71,17,107.81,2026-04-10,2026-10-03,3,High Value Loyal
+cust-026,CUST-026,Elizabeth Jackson,elizabeth.jackson26@example.com,+1-555-2026,1000.0,1771.89,10,177.19,2026-05-05,2026-09-19,17,Active Regular
+cust-027,CUST-027,Henry Johnson,henry.johnson27@example.com,+1-555-2027,1000.0,1470.64,7,210.09,2026-04-21,2026-08-22,45,Active Regular
+cust-028,CUST-028,Mila Jones,mila.jones28@example.com,+1-555-2028,1000.0,926.46,10,92.65,2026-04-18,2026-09-22,14,Active Regular
+cust-029,CUST-029,Sebastian Davis,sebastian.davis29@example.com,+1-555-2029,1000.0,2641.03,13,203.16,2026-04-19,2026-10-04,2,Active Regular
+cust-030,CUST-030,Ella Hernandez,ella.hernandez30@example.com,+1-555-2030,5000.0,1573.65,9,174.85,2026-04-11,2026-09-24,12,Active Regular
+cust-031,CUST-031,James Wilson,james.wilson31@example.com,+1-555-2031,1000.0,1505.57,19,79.24,2026-05-02,2026-10-05,1,High Value Loyal
+cust-032,CUST-032,Emma Taylor,emma.taylor32@example.com,+1-555-2032,1000.0,1159.79,13,89.21,2026-04-21,2026-09-23,13,Active Regular
+cust-033,CUST-033,Liam Martin,liam.martin33@example.com,+1-555-2033,1000.0,1149.52,10,114.95,2026-04-29,2026-10-06,0,Active Regular
+cust-034,CUST-034,Olivia Williams,olivia.williams34@example.com,+1-555-2034,1000.0,734.25,14,52.45,2026-04-11,2026-09-27,9,Active Regular
+cust-035,CUST-035,Noah Garcia,noah.garcia35@example.com,+1-555-2035,5000.0,1249.83,12,104.15,2026-04-13,2026-09-25,11,Active Regular
+cust-036,CUST-036,Ava Rodriguez,ava.rodriguez36@example.com,+1-555-2036,1000.0,819.19,13,63.01,2026-05-11,2026-10-06,0,Active Regular
+cust-037,CUST-037,Oliver Lopez,oliver.lopez37@example.com,+1-555-2037,1000.0,1616.74,13,124.36,2026-04-13,2026-10-06,-1,Active Regular
+cust-038,CUST-038,Sophia Anderson,sophia.anderson38@example.com,+1-555-2038,1000.0,676.76,6,112.79,2026-06-21,2026-09-10,26,Active Regular
+cust-039,CUST-039,Lucas Moore,lucas.moore39@example.com,+1-555-2039,1000.0,445.67,14,31.83,2026-05-01,2026-10-05,1,Active Regular
+cust-040,CUST-040,Isabella Smith,isabella.smith40@example.com,+1-555-2040,5000.0,1112.33,14,79.45,2026-05-15,2026-09-10,26,Active Regular
+cust-041,CUST-041,Mason Brown,mason.brown41@example.com,+1-555-2041,1000.0,892.77,9,99.2,2026-04-20,2026-09-09,27,Active Regular
+cust-042,CUST-042,Mia Miller,mia.miller42@example.com,+1-555-2042,1000.0,671.3,14,47.95,2026-04-29,2026-10-06,0,Active Regular
+cust-043,CUST-043,Ethan Martinez,ethan.martinez43@example.com,+1-555-2043,1000.0,842.17,11,76.56,2026-05-10,2026-09-27,9,Active Regular
+cust-044,CUST-044,Charlotte Gonzalez,charlotte.gonzalez44@example.com,+1-555-2044,1000.0,1196.89,18,66.49,2026-04-13,2026-10-05,1,Active Regular
+cust-045,CUST-045,Aiden Thomas,aiden.thomas45@example.com,+1-555-2045,5000.0,885.83,16,55.36,2026-04-24,2026-09-27,9,Active Regular
+cust-046,CUST-046,Amelia Jackson,amelia.jackson46@example.com,+1-555-2046,1000.0,1560.52,14,111.47,2026-05-16,2026-09-29,7,Active Regular
+cust-047,CUST-047,Jackson Johnson,jackson.johnson47@example.com,+1-555-2047,1000.0,1188.7,15,79.25,2026-04-10,2026-10-05,1,Active Regular
+cust-048,CUST-048,Harper Jones,harper.jones48@example.com,+1-555-2048,1000.0,452.52,9,50.28,2026-04-18,2026-10-03,3,Active Regular
+cust-049,CUST-049,Logan Davis,logan.davis49@example.com,+1-555-2049,1000.0,1907.07,19,100.37,2026-04-21,2026-10-01,5,High Value Loyal
+cust-050,CUST-050,Evelyn Hernandez,evelyn.hernandez50@example.com,+1-555-2050,5000.0,900.97,12,75.08,2026-05-11,2026-09-26,9,Active Regular

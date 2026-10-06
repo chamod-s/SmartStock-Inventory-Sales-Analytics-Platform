@@ -408,6 +408,12 @@ async function runAnalyticsTests() {
     '23. Product Analytics: Identifies products with lowest/zero gross profit'
   );
 
+  // Product Trends & Top Trend Names:
+  assert(
+    Boolean(data.products.topProductTrendNames && data.products.topProductTrendNames.includes('Ergonomic Desk Chair')),
+    '23b. Product Analytics: Populates topProductTrendNames for trend visualization'
+  );
+
   // =========================================================
   // SECTION 5: Inventory Analytics Calculations
   // =========================================================
@@ -439,6 +445,12 @@ async function runAnalyticsTests() {
   assert(
     data.inventory.lowStockCount === 1,
     '26. Inventory Analytics: Detects low stock products (1 item)'
+  );
+
+  // Low stock items detail list
+  assert(
+    Boolean(data.inventory.lowStockItems && data.inventory.lowStockItems.length > 0 && data.inventory.lowStockItems[0].sku === 'CBL-004'),
+    '26b. Inventory Analytics: Low stock items list identifies CBL-004 with deficit'
   );
 
   // Overstock: prod-2 has currentStock 50 > (reorder 10 * 3) and >= 15
